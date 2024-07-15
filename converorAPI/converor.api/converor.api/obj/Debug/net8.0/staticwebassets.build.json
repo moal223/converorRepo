@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ecdYJg6PFhQ2TyJ574Ndbuiy5l/UUAYhWUC3hAHuTjk=",
+  "Source": "converor.api",
+  "BasePath": "_content/converor.api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
