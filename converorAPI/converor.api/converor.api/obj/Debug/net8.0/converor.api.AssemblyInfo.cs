@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("converor.api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f26c60586e75dbd32609ef23dfd16a4b6f97103")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f143d68904de48a07f2ae44aa5ec3a7c8c09f3e")]
 [assembly: System.Reflection.AssemblyProductAttribute("converor.api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("converor.api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

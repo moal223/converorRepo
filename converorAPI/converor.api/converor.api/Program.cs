@@ -1,12 +1,11 @@
 using converor.api.Services;
-using converor.Core.Interfaces;
-using converor.Core.Models;
 using converor.EF.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using converor.api.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

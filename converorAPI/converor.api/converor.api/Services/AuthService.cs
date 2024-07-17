@@ -1,5 +1,4 @@
-﻿using converor.api.Dtos;
-using converor.Core.Interfaces;
+﻿using converor.api.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
 namespace converor.api.Services
