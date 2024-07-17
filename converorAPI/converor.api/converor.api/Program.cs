@@ -1,3 +1,5 @@
+using converor.api.Services;
+using converor.Core.Interfaces;
 using converor.Core.Models;
 using converor.EF.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -39,8 +41,13 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 });
+
 // Load the jwt settings
 builder.Services.Configure<Jwt>(builder.Configuration.GetSection("Jwt"));
+
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
