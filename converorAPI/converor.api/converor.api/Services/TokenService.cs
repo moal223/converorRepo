@@ -12,14 +12,14 @@ namespace converor.api.Services
     public class TokenService : ITokenService
     {
         private readonly Jwt _jwtSettings;
-        private readonly UserManager<IdentityUser> _userManager;
-        public TokenService(IOptions<Jwt> jwtSettings, UserManager<IdentityUser> userManager)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public TokenService(IOptions<Jwt> jwtSettings, UserManager<ApplicationUser> userManager)
         {
             _jwtSettings = jwtSettings.Value;
             _userManager = userManager;
         }
 
-        public async Task<string> GenerateToken(IdentityUser user)
+        public async Task<string> GenerateToken(ApplicationUser user)
         {
             // user main info
             var claims = new List<Claim>
