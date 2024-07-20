@@ -5,6 +5,6 @@ namespace converor.api.Services.Interfaces
 {
     public interface ITokenService
     {
-        Task<string> GenerateToken(ApplicationUser user);
+        Task<(string accessToken, string refreshToken)> GenerateTokensAsync(ApplicationUser user);
     }
 }

@@ -19,5 +19,8 @@ namespace converor.EF.Data
         {
             base.OnModelCreating(builder);
         }
+        public virtual DbSet<FileContent> Files { get; set; }
+        public virtual DbSet<FileDescription> FileDescriptions { get; set; }
+        public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }

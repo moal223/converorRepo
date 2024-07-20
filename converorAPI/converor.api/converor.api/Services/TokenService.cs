@@ -6,6 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using converor.api.Services.Interfaces;
+using System.Security.Cryptography;
 
 namespace converor.api.Services
 {
@@ -19,7 +20,31 @@ namespace converor.api.Services
             _userManager = userManager;
         }
 
-        public async Task<string> GenerateToken(ApplicationUser user)
+
+        private async Task<string> WriteTokenAsync(JwtSecurityToken token)
+        {
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        /*
+         * ===========================================
+         Create refresh token and add it to the system
+        * ============================================
+         */
+
+        // it takes the user and return the access token and refresh token
+        public async Task<(string accessToken, string refreshToken)> GenerateTokensAsync(ApplicationUser user)
+        {
+            var accessToken = await GenerateAccessTokenAsync(user);
+            var refreshToken = GenerateRefreshToken();
+
+            // save the refresh to the data base
+            user.RefreshTokens.Add(new RefreshToken { Token = refreshToken, ExpirationDate = DateTime.UtcNow.AddDays(7)});
+            await _userManager.UpdateAsync(user);
+
+            return (accessToken, refreshToken);
+        }
+        private async Task<string> GenerateAccessTokenAsync(ApplicationUser user)
         {
             // user main info
             var claims = new List<Claim>
@@ -48,9 +73,15 @@ namespace converor.api.Services
             return await WriteTokenAsync(token);
         }
 
-        private async Task<string> WriteTokenAsync(JwtSecurityToken token)
+        // Create the refresh token method
+        private string GenerateRefreshToken()
         {
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var randomNumber = new byte[32];
+            using(var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomNumber);
+                return Convert.ToBase64String(randomNumber);
+            }
         }
     }
 }
