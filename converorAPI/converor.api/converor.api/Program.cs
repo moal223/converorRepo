@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using converor.api.Services.Interfaces;
+using converor.EF.Repositories;
+using converor.EF.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +47,7 @@ builder.Services.AddAuthentication(options =>
 // Load the jwt settings
 builder.Services.Configure<Jwt>(builder.Configuration.GetSection("Jwt"));
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IFileDescriptionRepo, FileDescriptionRepo>();
 builder.Services.AddLogging();
 
 

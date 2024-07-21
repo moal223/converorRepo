@@ -69,8 +69,9 @@ namespace converor.api.Services
                 expires: DateTime.Now.AddMinutes(_jwtSettings.DurationMin),
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key)), SecurityAlgorithms.HmacSha256)
             );
+            var authToken = await WriteTokenAsync(token);
 
-            return await WriteTokenAsync(token);
+            return authToken;
         }
 
         // Create the refresh token method
@@ -82,6 +83,16 @@ namespace converor.api.Services
                 rng.GetBytes(randomNumber);
                 return Convert.ToBase64String(randomNumber);
             }
+        }
+        public string GetUserIdFromToken(string token)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var jwtToken = handler.ReadJwtToken(token);
+
+            var userIdClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == "userid");
+            var userId = userIdClaim?.Value;
+
+            return userId;
         }
     }
 }
