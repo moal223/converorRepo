@@ -1,8 +1,10 @@
-﻿using converor.api.Dtos;
+﻿using System.Security.Claims;
+using converor.api.Dtos;
 using converor.api.Dtos.Files;
 using converor.api.Services.Interfaces;
 using converor.Core.Models;
 using converor.EF.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +13,7 @@ namespace converor.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class FileController : ControllerBase
     {
         private readonly IFileDescriptionRepo _fileRepo;
@@ -28,7 +31,7 @@ namespace converor.api.Controllers
         }
         [RequestSizeLimit(100_000_000)] // 100 MB
         [HttpPost]
-        public async Task<IActionResult> Upload([FromQuery]string access, IFormFile file)
+        public async Task<IActionResult> Upload([FromForm]IFormFile file)
         {
             try
             {
@@ -38,7 +41,7 @@ namespace converor.api.Controllers
                     return BadRequest(new BaseResponse(state: false, message: ModelState.Values.SelectMany(v => v.Errors)
                         .Select(e => e.ErrorMessage).ToList(), null));
                 }
-                var userId = _tokenService.GetUserIdFromToken(access);
+                var userId = User.FindFirstValue("userid");
 
                 // extract the file description
                 var fileDescription = GetDescription(file);
@@ -65,8 +68,8 @@ namespace converor.api.Controllers
             }
         }
 
-        [HttpGet("/{id}")]
-        public async Task<IActionResult> Download(int id)
+        [HttpGet("api/file/{id}")]
+        public async Task<IActionResult> Download([FromRoute]int id)
         {
             try
             {

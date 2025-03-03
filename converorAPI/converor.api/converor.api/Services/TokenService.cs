@@ -84,15 +84,6 @@ namespace converor.api.Services
                 return Convert.ToBase64String(randomNumber);
             }
         }
-        public string GetUserIdFromToken(string token)
-        {
-            var handler = new JwtSecurityTokenHandler();
-            var jwtToken = handler.ReadJwtToken(token);
-
-            var userIdClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == "userid");
-            var userId = userIdClaim?.Value;
-
-            return userId;
-        }
+        
     }
 }

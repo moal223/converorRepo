@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fGdSMuyUEfiYQhqZEZNu2hHNWqVy1HgQNLG6EYmSE9lQGjTJw5nMFo3iLKVbEtV45l+dtCPToTJlPQ6D8KbEGQ==",
+  "dgSpecHash": "+dl9F+vFiMUv91fStUAvCY5RVj6B05HmRDXfGVU1SVicsi3/qNdts3J3a9YuFYwYkUoB7sT//F5rj/ivcdYbzQ==",
   "success": true,
-  "projectFilePath": "D:\\converorRepo\\converorAPI\\converor.api\\converor.api\\converor.api.csproj",
+  "projectFilePath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.api\\converor.api\\converor.api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\XPRISTO\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\XPRISTO\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

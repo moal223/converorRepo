@@ -26,6 +26,24 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDBContext>()
     .AddDefaultTokenProviders();
 
+
+
+// Load the jwt settings
+builder.Services.Configure<Jwt>(builder.Configuration.GetSection("Jwt"));
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IFileDescriptionRepo, FileDescriptionRepo>();
+builder.Services.AddLogging();
+builder.Services.AddCors(options =>{
+    options.AddPolicy("initial", 
+        builder =>{
+            builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        }
+    );
+});
+
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; // the default scheme (jwt) => it could be any other scheme like oidc
@@ -39,16 +57,10 @@ builder.Services.AddAuthentication(options =>
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Aduience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]))
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 });
-
-// Load the jwt settings
-builder.Services.Configure<Jwt>(builder.Configuration.GetSection("Jwt"));
-builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddScoped<IFileDescriptionRepo, FileDescriptionRepo>();
-builder.Services.AddLogging();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -63,6 +75,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("initial");
 
 app.UseAuthentication();
 app.UseAuthorization();

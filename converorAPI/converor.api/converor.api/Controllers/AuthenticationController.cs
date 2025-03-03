@@ -38,8 +38,12 @@ namespace converor.api.Controllers
                         .Select(e => e.ErrorMessage).ToList(), null));
                 }
 
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if(user != null)
+                    return BadRequest(new BaseResponse(state: false, message: ["this email already exists"], null));
+
                 // create the user
-                var user = new ApplicationUser { Email = model.Email, UserName = model.Email.Split('@')[0] };
+                user = new ApplicationUser { Email = model.Email, UserName = Guid.NewGuid().ToString()};
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 // return the token

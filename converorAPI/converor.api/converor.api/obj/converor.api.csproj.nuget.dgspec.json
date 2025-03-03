@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\converorRepo\\converorAPI\\converor.api\\converor.api\\converor.api.csproj": {}
+    "e:\\programming projects\\converorRepo\\converorAPI\\converor.api\\converor.api\\converor.api.csproj": {}
   },
   "projects": {
-    "D:\\converorRepo\\converorAPI\\converor.api\\converor.api\\converor.api.csproj": {
+    "e:\\programming projects\\converorRepo\\converorAPI\\converor.api\\converor.api\\converor.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\converorRepo\\converorAPI\\converor.api\\converor.api\\converor.api.csproj",
+        "projectUniqueName": "e:\\programming projects\\converorRepo\\converorAPI\\converor.api\\converor.api\\converor.api.csproj",
         "projectName": "converor.api",
-        "projectPath": "D:\\converorRepo\\converorAPI\\converor.api\\converor.api\\converor.api.csproj",
+        "projectPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.api\\converor.api\\converor.api.csproj",
         "packagesPath": "C:\\Users\\XPRISTO\\.nuget\\packages\\",
-        "outputPath": "D:\\converorRepo\\converorAPI\\converor.api\\converor.api\\obj\\",
+        "outputPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.api\\converor.api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj": {
-                "projectPath": "D:\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj"
+              "e:\\programming projects\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj": {
+                "projectPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj"
               },
-              "D:\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj": {
-                "projectPath": "D:\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj"
+              "e:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj": {
+                "projectPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj"
               }
             }
           }
@@ -99,14 +99,14 @@
         }
       }
     },
-    "D:\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj": {
+    "e:\\programming projects\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj",
+        "projectUniqueName": "e:\\programming projects\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj",
         "projectName": "converor.Core",
-        "projectPath": "D:\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj",
+        "projectPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj",
         "packagesPath": "C:\\Users\\XPRISTO\\.nuget\\packages\\",
-        "outputPath": "D:\\converorRepo\\converorAPI\\converor.Core\\obj\\",
+        "outputPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -170,14 +170,14 @@
         }
       }
     },
-    "D:\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj": {
+    "e:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj",
+        "projectUniqueName": "e:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj",
         "projectName": "converor.EF",
-        "projectPath": "D:\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj",
+        "projectPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj",
         "packagesPath": "C:\\Users\\XPRISTO\\.nuget\\packages\\",
-        "outputPath": "D:\\converorRepo\\converorAPI\\converor.EF\\obj\\",
+        "outputPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -199,8 +199,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj": {
-                "projectPath": "D:\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj"
+              "e:\\programming projects\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj": {
+                "projectPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj"
               }
             }
           }
