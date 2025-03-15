@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using converor.api.Dtos;
 using converor.api.Dtos.Files;
+using converor.api.Mapping;
 using converor.api.Services.Interfaces;
 using converor.Core.Models;
 using converor.EF.Repositories.Interfaces;
@@ -17,17 +18,13 @@ namespace converor.api.Controllers
     public class FileController : ControllerBase
     {
         private readonly IFileDescriptionRepo _fileRepo;
-        private readonly ITokenService _tokenService;
-        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<FileController> _logger;
-        public FileController(IFileDescriptionRepo fileRepo, ITokenService tokenService,
-            UserManager<ApplicationUser> userManager, ILogger<FileController> logger)
+
+        public FileController(IFileDescriptionRepo fileRepo, ILogger<FileController> logger)
         {
             _fileRepo = fileRepo;
-            _tokenService = tokenService;
-            _userManager = userManager;
             _logger = logger;
-
+            
         }
         [RequestSizeLimit(100_000_000)] // 100 MB
         [HttpPost]
@@ -47,7 +44,7 @@ namespace converor.api.Controllers
                 var fileDescription = GetDescription(file);
 
                 // save the file 
-                fileDescription.UserId = userId;
+                // fileDescription.UserId = userId;
                 await _fileRepo.InsertAsync(fileDescription);
                 await _fileRepo.SaveAsync();
 
@@ -68,7 +65,7 @@ namespace converor.api.Controllers
             }
         }
 
-        [HttpGet("api/file/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Download([FromRoute]int id)
         {
             try
@@ -87,6 +84,18 @@ namespace converor.api.Controllers
                 _logger.LogError(ex, "an error occurred while downloading the file.");
                 return StatusCode(500, new BaseResponse(false, new List<string> { "An error occurred while processing your request" }, null));
             }
+        }
+
+        [Authorize]
+        [HttpGet("get-files")]
+        public async Task<IActionResult> GetAllWithoutContent(){
+            string UID = User.FindFirstValue("userid");
+            if(UID == null || UID == "")
+                return Unauthorized();
+            
+            var files = await _fileRepo.GetAllAsync(UID);
+            var filesDto = files.ToGetFileDescDto();
+            return Ok(filesDto);
         }
 
         #region Methods

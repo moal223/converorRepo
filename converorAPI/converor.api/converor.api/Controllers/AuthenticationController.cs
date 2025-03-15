@@ -3,6 +3,7 @@ using converor.api.Dtos.Authentication;
 using converor.api.Dtos.Tokens;
 using converor.api.Services.Interfaces;
 using converor.Core.Models;
+using converor.EF.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,13 +18,16 @@ namespace converor.api.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ITokenService _tokenService;
+        private readonly IFolderRepo _folderRepo;
         public AuthenticationController(ITokenService tokenService, UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager, ILogger<AuthenticationController> logger)
+            SignInManager<ApplicationUser> signInManager, ILogger<AuthenticationController> logger,
+            IFolderRepo folderRepo)
         {
             _tokenService = tokenService;
             _signInManager = signInManager;
             _userManager = userManager;
             _logger = logger;
+            _folderRepo = folderRepo;
         }
         // Register
         [HttpPost("auth/register")]
@@ -44,11 +48,15 @@ namespace converor.api.Controllers
 
                 // create the user
                 user = new ApplicationUser { Email = model.Email, UserName = Guid.NewGuid().ToString()};
+
                 var result = await _userManager.CreateAsync(user, model.Password);
+                
 
                 // return the token
                 if (result.Succeeded)
                 {
+                    // create the base folder
+                    var baseFolder = await _folderRepo.InsertAsync(new Folder{Name = "0", ApplicationUser = user, ApplicationUserId = user.Id});
                     var tokens = await _tokenService.GenerateTokensAsync(user);
                     return Ok(new BaseResponse(true, new List<string> { "Success" }, new { access = tokens.accessToken, refresh = tokens.refreshToken }));
                 }

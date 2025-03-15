@@ -32,6 +32,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 builder.Services.Configure<Jwt>(builder.Configuration.GetSection("Jwt"));
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IFileDescriptionRepo, FileDescriptionRepo>();
+builder.Services.AddScoped<IFolderRepo, FolderRepo>();
 builder.Services.AddLogging();
 builder.Services.AddCors(options =>{
     options.AddPolicy("initial", 

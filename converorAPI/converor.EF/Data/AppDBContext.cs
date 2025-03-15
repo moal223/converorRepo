@@ -1,4 +1,5 @@
 ﻿using converor.Core.Models;
+using converor.EF.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -18,10 +19,15 @@ namespace converor.EF.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            // apply FolderConfiguration
+            builder.ApplyConfiguration(new FolderConfiguration());
+            builder.ApplyConfiguration(new FileConfiguration());
         }
         public virtual DbSet<FileContent> Files { get; set; }
         public virtual DbSet<FileDescription> FileDescriptions { get; set; }
         public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
+        public virtual DbSet<Folder> Folders {get; set;}
         public virtual DbSet<AuthenticationToken> AuthenticationTokens { get; set; }
     }
 }

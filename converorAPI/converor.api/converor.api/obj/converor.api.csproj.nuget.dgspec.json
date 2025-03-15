@@ -36,8 +36,8 @@
               "e:\\programming projects\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj": {
                 "projectPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.Core\\converor.Core.csproj"
               },
-              "e:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj": {
-                "projectPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj"
+              "E:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj": {
+                "projectPath": "E:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj"
               }
             }
           }
@@ -170,14 +170,14 @@
         }
       }
     },
-    "e:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj": {
+    "E:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj",
+        "projectUniqueName": "E:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj",
         "projectName": "converor.EF",
-        "projectPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj",
+        "projectPath": "E:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\converor.EF.csproj",
         "packagesPath": "C:\\Users\\XPRISTO\\.nuget\\packages\\",
-        "outputPath": "e:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\obj\\",
+        "outputPath": "E:\\programming projects\\converorRepo\\converorAPI\\converor.EF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -228,6 +228,12 @@
               "target": "Package",
               "version": "[8.0.7, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.7, )"
@@ -237,6 +243,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.7, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.2, )"
             }
           },
           "imports": [

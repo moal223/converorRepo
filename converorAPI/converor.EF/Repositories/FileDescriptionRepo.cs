@@ -21,7 +21,12 @@ namespace converor.EF.Repositories
 
         public async Task<List<FileDescription>> GetAllAsync(string userId)
         {
-            return await _context.FileDescriptions.Include(f => f.Content).Where(f => f.UserId == userId).ToListAsync();
+            return await _context.FileDescriptions.Include(f => f.Content).ToListAsync();
+        }
+
+        public async Task<List<FileDescription>> GetAllWithContentAsync(string userId)
+        {
+            return await _context.FileDescriptions.ToListAsync();
         }
 
         public async Task<FileDescription?> GetByIdAsync(int id)

@@ -294,21 +294,48 @@ namespace converor.EF.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<int?>("ParentFolderId")
+                        .HasColumnType("int");
+
                     b.Property<long>("Size")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("UploadedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentFolderId");
+
+                    b.ToTable("FileDescriptions");
+                });
+
+            modelBuilder.Entity("converor.Core.Models.Folder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ParentFolderId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("FileDescriptions");
+                    b.HasIndex("ParentFolderId");
+
+                    b.ToTable("Folders");
                 });
 
             modelBuilder.Entity("converor.Core.Models.RefreshToken", b =>
@@ -412,13 +439,30 @@ namespace converor.EF.Migrations
 
             modelBuilder.Entity("converor.Core.Models.FileDescription", b =>
                 {
-                    b.HasOne("converor.Core.Models.ApplicationUser", "User")
-                        .WithMany("Files")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("converor.Core.Models.Folder", "ParentFolder")
+                        .WithMany("SubFiles")
+                        .HasForeignKey("ParentFolderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("ParentFolder");
+                });
+
+            modelBuilder.Entity("converor.Core.Models.Folder", b =>
+                {
+                    b.HasOne("converor.Core.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Folders")
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.HasOne("converor.Core.Models.Folder", "ParentFolder")
+                        .WithMany("SubFolders")
+                        .HasForeignKey("ParentFolderId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("ParentFolder");
                 });
 
             modelBuilder.Entity("converor.Core.Models.RefreshToken", b =>
@@ -434,7 +478,7 @@ namespace converor.EF.Migrations
 
             modelBuilder.Entity("converor.Core.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("Files");
+                    b.Navigation("Folders");
 
                     b.Navigation("RefreshTokens");
                 });
@@ -443,6 +487,13 @@ namespace converor.EF.Migrations
                 {
                     b.Navigation("Content")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("converor.Core.Models.Folder", b =>
+                {
+                    b.Navigation("SubFiles");
+
+                    b.Navigation("SubFolders");
                 });
 #pragma warning restore 612, 618
         }

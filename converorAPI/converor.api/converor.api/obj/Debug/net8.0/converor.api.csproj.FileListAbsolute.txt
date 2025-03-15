@@ -296,3 +296,14 @@ e:\programming projects\converorRepo\converorAPI\converor.api\converor.api\obj\D
 e:\programming projects\converorRepo\converorAPI\converor.api\converor.api\obj\Debug\net8.0\converor.api.pdb
 e:\programming projects\converorRepo\converorAPI\converor.api\converor.api\obj\Debug\net8.0\converor.api.genruntimeconfig.cache
 e:\programming projects\converorRepo\converorAPI\converor.api\converor.api\obj\Debug\net8.0\ref\converor.api.dll
+E:\programming projects\converorRepo\converorAPI\converor.Api\converor.api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+E:\programming projects\converorRepo\converorAPI\converor.Api\converor.api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\programming projects\converorRepo\converorAPI\converor.Api\converor.api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+E:\programming projects\converorRepo\converorAPI\converor.Api\converor.api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
+E:\programming projects\converorRepo\converorAPI\converor.Api\converor.api\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+E:\programming projects\converorRepo\converorAPI\converor.Api\converor.api\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Physical.dll
+E:\programming projects\converorRepo\converorAPI\converor.Api\converor.api\bin\Debug\net8.0\Microsoft.Extensions.FileSystemGlobbing.dll
+E:\programming projects\converorRepo\converorAPI\converor.Api\converor.api\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+E:\programming projects\converorRepo\converorAPI\converor.Api\converor.api\bin\Debug\net8.0\System.IO.Pipelines.dll
+E:\programming projects\converorRepo\converorAPI\converor.Api\converor.api\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+E:\programming projects\converorRepo\converorAPI\converor.Api\converor.api\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll

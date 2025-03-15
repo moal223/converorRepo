@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("converor.api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e501aa17b9a4da1c009cdd746e98537855f65e8d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd8a57d792af58932d7c9d18db2f06054644aad2")]
 [assembly: System.Reflection.AssemblyProductAttribute("converor.api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("converor.api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

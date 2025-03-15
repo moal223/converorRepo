@@ -12,8 +12,9 @@ namespace converor.Core.Models
         [StringLength(250)]
         public string FileName { get; set; }
         public long Size { get; set; }
-        public string UserId { get; set; }
-        public ApplicationUser User { get; set; }
         public FileContent Content { get; set; }
+
+        public int? ParentFolderId {get; set;}
+        public Folder ParentFolder {get; set;}
     }
 }
